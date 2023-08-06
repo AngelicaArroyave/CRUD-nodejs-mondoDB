@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
 
 // Forma 1 de conectarse localmente
 // mongoose.connect('mongodb://localhost/angular-auth',{

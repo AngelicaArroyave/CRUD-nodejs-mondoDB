@@ -1,13 +1,13 @@
-const { Router } = require('express')
-const router = Router()
+import { Router } from 'express'
+import User from '../models/User.js'
+import jwt from 'jsonwebtoken'
 
-const User = require('../models/User')
-const jwt = require('jsonwebtoken')
+const userRouters = Router()
 
-router.get('/', (req, res) => res.send('Hello world'))
+userRouters.get('/', (req, res) => res.send('Hello world'))
 
 // Crear un usuario/registrarse
-router.post('/signup', async (req, res) => {
+userRouters.post('/signup', async (req, res) => {
     const { email, password } = req.body
     const newUser = new User({ email, password })
     await newUser.save()
@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
 })
 
 // Iniciar sesión
-router.post('/signin', async (req, res) => {
+userRouters.post('/signin', async (req, res) => {
     const { email, password } = req.body
     const user = await User.findOne({ email })
     
@@ -34,8 +34,21 @@ router.post('/signin', async (req, res) => {
 })
 
 // Método para verificar la existencia del token
-function verifyToken(req, res, next) {
-    console.log(req.headers.authorization);
+// El token que devuelve el iniciar sesión se debe pegar en postam en los header en authorization
+async function verifyToken(req, res, next) {
+    try {
+        if(!req.headers.authorization) return res.status(401).send('Unauhtorized request')
+
+        const token = req.headers.authorization.split(' ')[1]
+        if(token === 'null') return res.status(401).send('Unauhtorized request')
+
+        // Se obtiene el id de la persona que inicio sesión
+        const payload = jwt.verify(token, 'SecretKey')
+        req.userId = payload._id
+        next()
+    } catch (error) {
+        return res.status(401).send('Unauhtorized request')
+    }
 }
 
-module.exports = {router, verifyToken}
+export { userRouters, verifyToken }

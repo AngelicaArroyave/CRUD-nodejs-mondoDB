@@ -1,11 +1,10 @@
-import { verifyToken } from './users.routes'
+import { verifyToken } from './users.routes.js'
+import { Router } from 'express'
 
-const { Router } = require('express')
-const router = Router()
-// const user_routes = require('./users.routes')
+const taskRouters = Router()
 
 // Obtener la lista de tareas públicas
-router.get('/tasks', (req, res) => {
+taskRouters.get('/tasks', (req, res) => {
     res.json([
         {
             _id: 1,
@@ -28,7 +27,7 @@ router.get('/tasks', (req, res) => {
     ])
 })
 
-router.get('/private-tasks', verifyToken, (req, res) => {
+taskRouters.get('/private-tasks', verifyToken, (req, res) => {
     res.json([
         {
             _id: 1,
@@ -51,4 +50,4 @@ router.get('/private-tasks', verifyToken, (req, res) => {
     ])
 })
 
-module.exports = router
+export default taskRouters
