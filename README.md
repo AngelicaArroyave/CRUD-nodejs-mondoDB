@@ -1,7 +1,7 @@
 # CRUD-nodejs-mondoDB
 Práctica de Node JS, MongoDB y Angular para realizar un CRUD y Autenticación
 
-Para iniciar el proyecto se necesita instalar las siguientes dependencias:
+Para iniciar el proyecto de backend (API Rest con NodeJS) se necesita instalar las siguientes dependencias:
 1. npm init -y: Para crear el package.json
 2. npm i express mongoose cors jsonwebtoken:
     express: Es un módulo y a la vez un framework de node o npm que permite conectar el servidor de una manera sencilla
@@ -19,3 +19,7 @@ Para iniciar el proyecto se necesita instalar las siguientes dependencias:
 10. npm install --save-dev @babel-node
 11. npm install --save-dev @babel/preset-env
 12. Al agregar al package.json "dev": "nodemon backend/src/index.js --exec babel-node", se usa de nuevo el comando "npm run dev"
+
+Para iniciar el proyecto de frontend (AngularJS) se necesita instalar:
+1. ng new frontend --routing
+    se debe seleccionar CSS

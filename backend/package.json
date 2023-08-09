@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon backend/src/index.js --exec babel-node"
+    "dev": "nodemon src/index.js --exec babel-node"
   },
   "type": "module",
   "keywords": [],
