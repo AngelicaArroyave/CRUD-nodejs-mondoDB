@@ -1,0 +1,20 @@
+a {
+  color: white;
+}
+
+.container-fluid {
+  margin: auto 100px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.navbar-center {
+  display: grid;
+  justify-content: center;
+}
+
+.navbar-rigth {
+  justify-content: right;
+}
