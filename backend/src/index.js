@@ -3,11 +3,13 @@ import morgan from 'morgan';
 import './database.js'
 import { userRouters } from './routes/users.routes.js';
 import taskRouters from './routes/tasks.routes.js';
+import cors from 'cors';
 
 const app = express()
 
 // Permite convertir los datos del servidor a un objeto json que se pueda manipular
 app.use(express.json())
+app.use(cors())
 // Middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
