@@ -21,5 +21,13 @@ Para iniciar el proyecto de backend (API Rest con NodeJS) se necesita instalar l
 12. Al agregar al package.json "dev": "nodemon backend/src/index.js --exec babel-node", se usa de nuevo el comando "npm run dev"
 
 Para iniciar el proyecto de frontend (AngularJS) se necesita instalar:
-1. ng new frontend --routing
-    se debe seleccionar CSS
+1. ng new frontend --routing: Se debe seleccionar CSS
+2. ng serve: Permite la ejecución del proyecto de Angular
+3. ng generate component components/signup o ng g c components/signup: Permite crear nuevos componentes en el proyecto con la ruta y nombre de las carpetas en donde se decida ser guardado
+4. ng generate service services/auth o ng g s services/auth: Permite crear nuevos servicios en el proyecto con la ruta y nombre de las carpetas en donde se decida ser guardado
+5. Se crea un guard por medio del comando ng g g auth, de allí se selecciona el 'CanActivate'
+
+Para conectar el backend con el frontend, se debe:
+1. Abrir una terminar y ejecutar 'ng serve' para ejecutar el frontend
+2. Abrir otra terminal y ejecutar 'npm run dev' para correr el servidor del backend
+3. Abrir una última terminal y ejecutar 'mongod' para conectar la base de datos

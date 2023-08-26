@@ -20,7 +20,6 @@ export class SigninComponent {
     this.authService.signIn(this.user)
       .subscribe(
         response => {
-          console.log(response)
           localStorage.setItem('token', response.token)
           this.router.navigate(['/private'])
         },
