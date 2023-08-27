@@ -3,14 +3,72 @@
 <table class="table table-hover">
   <thead>
     <tr class="table-active">
-      <th scope="col"> Id Task </th>
-      <th scope="col"> Description Task </th>
+      <th scope="col"> Title </th>
+      <th scope="col"> Description </th>
+      <th scope="col"> Action </th>
     </tr>
   </thead>
   <tbody>
     <tr class="table-light" *ngFor="let task of privateTaks">
-      <th scope="row"> {{task['_id']}} </th>
+      <th scope="row"> {{task['title']}} </th>
       <td> {{task['description']}} </td>
+      <td id="buttons">
+        <ng-container>
+          <button (click)="updatePropertyTask(task)" type="button" class="btn btn-outline-dark" *ngIf="task['done'] === true; else buttonDone"> Done </button>
+        </ng-container>
+        <ng-template #buttonDone>
+          <button (click)="updatePropertyTask(task)" type="button" class="btn btn-outline-dark"> Undone </button>
+        </ng-template>
+        <button (click)="openModal(content, task)" type="button" class="btn btn-outline-warning"> Update </button>
+        <button (click)="deleteTask(task['_id'])" type="button" class="btn btn-outline-danger"> Delete </button>
+      </td>
     </tr>
   </tbody>
 </table>
+<div class="card border-light mb-3" id="primary-card">
+  <h3 class="card-header card-title"> Add a Task </h3>
+  <div class="card-body">
+    <div class="form-group">
+      <div class="form-floating mb-3">
+        <label for="floatingInput"> Title </label>
+        <input [(ngModel)]="newTask.title" type="text" class="form-control" placeholder="Write the title">
+      </div>
+      <div class="form-floating">
+        <label for="floatingTextArea"> Description </label>
+        <textarea [(ngModel)]="newTask.description" type="text" class="form-control" placeholder="Write a description"
+          rows="3"></textarea>
+      </div>
+      <br>
+      <div class="form-floating">
+        <button type="button" class="btn btn-info" (click)="saveTask()"> Add </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content>
+  <div class="modal-content">
+    <div class="modal-header bg-light">
+      <h5 class="modal-title"> Edit a Task </h5>
+      <button (click)="modalRef.hide()" type="button" class="btn-close" aria-label="Close">
+        <span aria-hidden="true"> &#x2715; </span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <div class="form-floating mb-3">
+          <label for="floatingInput"> Title </label>
+          <input [(ngModel)]="editTask.title" type="text" class="form-control">
+        </div>
+        <div class="form-floating">
+          <label for="floatingTextArea"> Description </label>
+          <textarea [(ngModel)]="editTask.description" type="text" class="form-control" placeholder="Write a description" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button (click)="updateTask()" type="button" class="btn btn-primary"> Save changes </button>
+      <button (click)="modalRef.hide()" type="button" class="btn btn-secondary" data-bs-dismiss="modal-content"> Close
+      </button>
+    </div>
+  </div>
+</ng-template>

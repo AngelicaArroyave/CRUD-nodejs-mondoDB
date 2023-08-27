@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ModalModule } from 'ngx-bootstrap/modal'
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,8 @@ import { TokenInterceptorService } from './services/token/token-interceptor.serv
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthGuard,

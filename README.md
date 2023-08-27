@@ -26,6 +26,7 @@ Para iniciar el proyecto de frontend (AngularJS) se necesita instalar:
 3. ng generate component components/signup o ng g c components/signup: Permite crear nuevos componentes en el proyecto con la ruta y nombre de las carpetas en donde se decida ser guardado
 4. ng generate service services/auth o ng g s services/auth: Permite crear nuevos servicios en el proyecto con la ruta y nombre de las carpetas en donde se decida ser guardado
 5. Se crea un guard por medio del comando ng g g auth, de allí se selecciona el 'CanActivate'
+6. Se debe instalar bootstrap o bootswatch para usar el NgbModal, 'npm install @ng-bootstrap/ng-bootstrap'
 
 Para conectar el backend con el frontend, se debe:
 1. Abrir una terminar y ejecutar 'ng serve' para ejecutar el frontend

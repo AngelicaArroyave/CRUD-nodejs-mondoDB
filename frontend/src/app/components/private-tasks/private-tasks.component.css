@@ -1,3 +1,20 @@
 th {
   text-align: center;
 }
+
+#primary-card {
+  max-width: 40rem;
+}
+
+.btn-close {
+  border: none;
+  background-color: #f9f8fc;
+  position: relative;
+  padding: 0px;
+  font-size: 1.2rem;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+}
